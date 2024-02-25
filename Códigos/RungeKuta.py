@@ -1,4 +1,6 @@
-# # Solucion de ecuaciones diferenciales por Runge Kuta
+# RungeKuta.py
+
+# Solucion de ecuaciones diferenciales por Runge Kuta
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -18,14 +20,18 @@ def runge_kutta_4th_order(func, y0, t_span, h):
 
     return np.array(t_values), np.array(y_values)
 
-def AtrayenteLorenz(t, y, a, b, c):
-    dy1dt = a*(y[1]-y[0])
-    dy2dt = y[0]*(b-y[2])-y[1]
-    dy3dt = y[0]*y[1]-c*y[2]
-    return np.array([dy1dt, dy2dt, dy3dt])
+def CrearFuncionLorenz(a,b,c)
+    def AtrayenteLorenz(t, y):
+        dy1dt = a*(y[1]-y[0])
+        dy2dt = y[0]*(b-y[2])-y[1]
+        dy3dt = y[0]*y[1]-c*y[2]
+        return np.array([dy1dt, dy2dt, dy3dt])
+    return AtrayenteLorenz
 
-def AtrayenteRossler(t, y, a, b, c):
-    dy1dt = -y[1]-y[2]
-    dy2dt = y[0]+a*y[1]
-    dy3dt = b+y[2]*(y[1]-c)
-    return np.array([dy1dt, dy2dt, dy3dt])
+def CrearFuncionRossler(a,b,c):
+    def AtrayenteRossler(t, y):
+        dy1dt = -y[1]-y[2]
+        dy2dt = y[0]+a*y[1]
+        dy3dt = b+y[2]*(y[1]-c)
+        return np.array([dy1dt, dy2dt, dy3dt])
+    return AtrayenteRossler
