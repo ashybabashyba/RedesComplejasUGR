@@ -20,7 +20,7 @@ def runge_kutta_4th_order(func, y0, t_span, h):
 
     return np.array(t_values), np.array(y_values)
 
-def CrearFuncionLorenz(a,b,c)
+def CrearFuncionLorenz(a,b,c):
     def AtrayenteLorenz(t, y):
         dy1dt = a*(y[1]-y[0])
         dy2dt = y[0]*(b-y[2])-y[1]
