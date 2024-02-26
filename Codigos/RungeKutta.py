@@ -32,6 +32,6 @@ def CrearFuncionRossler(a,b,c):
     def AtrayenteRossler(t, y):
         dy1dt = -y[1]-y[2]
         dy2dt = y[0]+a*y[1]
-        dy3dt = b+y[2]*(y[1]-c)
+        dy3dt = b+y[2]*(y[0]-c)
         return np.array([dy1dt, dy2dt, dy3dt])
     return AtrayenteRossler
