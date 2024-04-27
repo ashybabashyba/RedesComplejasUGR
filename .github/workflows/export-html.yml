@@ -1,4 +1,4 @@
-name: Export Notebook to html
+name: Export Notebook to HTML
 
 on:
   push:
@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -21,6 +22,12 @@ jobs:
         run: |
           pip install nbconvert
 
-      - name: Convert notebook to html
+      - name: Convert notebook to HTML
         run: |
           jupyter nbconvert --to html NotebookPrincipal.ipynb
+
+      - name: Upload HTML artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: html-artifact
+          path: NotebookPrincipal.html
