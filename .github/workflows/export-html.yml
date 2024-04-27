@@ -24,7 +24,7 @@ jobs:
 
       - name: Convert notebook to HTML
         run: |
-          jupyter nbconvert --to html NotebookPrincipal.ipynb
+          jupyter nbconvert --to html --use_attachments=True NotebookPrincipal.ipynb
 
       - name: Upload HTML artifact
         uses: actions/upload-artifact@v2
