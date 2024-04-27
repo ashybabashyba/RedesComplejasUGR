@@ -1,0 +1,26 @@
+name: Export Notebook to html
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install nbconvert
+
+      - name: Convert notebook to html
+        run: |
+          jupyter nbconvert --to html NotebookPrincipal.ipynb
